@@ -105,14 +105,14 @@ mot de passe : employee
 
 ## Pour l’installation du projet sur Windows avec Visual Studio Code
 
-Créer un dossier Bill-App
-L’initialiser :
+- Créer un dossier Bill-App
+- L’initialiser :
     $ git init
-Copier le code Backend :
+- Copier le code Backend :
     $ git clone <https://github.com/OpenClassrooms-Student-Center/Billed-app-FR-Back.git>
-Copier le code frontend :
+- Copier le code frontend :
     $ git clone <https://github.com/OpenClassrooms-Student-Center/Billed-app-FR-Front.git>
-Ouvrir chaque dossier dans un terminal « T » différent :
+- Ouvrir chaque dossier dans un terminal « T » différent :
     T1
     $ cd Billed-app-FR-Back
     $ npm i
@@ -121,12 +121,12 @@ Ouvrir chaque dossier dans un terminal « T » différent :
     $ npm i -g jest
     $ npm install -g win-node-env (installation du back)
 
-    Ouvrir le fichier « package.json » et ajouter « set » et « && » SANS ESPACE AVANT &&
-    "test": "set NODE_ENV=test&& sequelize-cli db:migrate&& jest test -i tests/user.test.js --watch",
-    "run:dev": "set NODE_ENV=development&& sequelize-cli db:migrate&& node server.js",
+  - Ouvrir le fichier « package.json » et ajouter « set » et « && » SANS ESPACE AVANT &&
+    "test":
+  - "set NODE_ENV=test&& sequelize-cli db:migrate&& jest test -i tests/user.test.js --watch"
+  - "run:dev": "set NODE_ENV=development&& sequelize-cli db:migrate&& node server.js",
 
     $ npm run run:dev (lance le back)
-
 
     T2
     $ cd Billed-app-FR-Front
@@ -134,6 +134,6 @@ Ouvrir chaque dossier dans un terminal « T » différent :
     $ npm install -g live-server
     $ live-server
     si le site n’est pas lancé automatiquement :
-        adresse : http://127.0.0.1:8080/
+        adresse : <http://127.0.0.1:8080/>
 
 Ensuite pour relancer votre projet si tout est fermé, vous n’aurez qu’à refaire les opérations en gras
