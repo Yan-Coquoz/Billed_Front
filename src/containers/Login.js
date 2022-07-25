@@ -25,7 +25,6 @@ export default class Login {
     formAdmin.addEventListener("submit", this.handleSubmitAdmin);
   }
 
-  // NOTE Bug sur les inputs employés
   handleSubmitEmployee = (e) => {
     e.preventDefault();
     const user = {
@@ -47,6 +46,7 @@ export default class Login {
         this.document.body.style.backgroundColor = "#fff";
       });
   };
+
   // NOTE Bug sur les inputs admin
   handleSubmitAdmin = (e) => {
     e.preventDefault();

@@ -134,6 +134,6 @@ mot de passe : employee
     $ npm install -g live-server
     $ live-server
     si le site n’est pas lancé automatiquement :
-        adresse : <http://127.0.0.1:8080/>
+        adresse : <http://127.0.0.1:5501/>
 
 Ensuite pour relancer votre projet si tout est fermé, vous n’aurez qu’à refaire les opérations en gras

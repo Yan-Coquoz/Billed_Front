@@ -34,7 +34,7 @@ afterEach(() => {
 
 describe("Étant donné que je suis connecté en tant qu'employé", () => {
   describe("Quand je suis sur la page NewBill", () => {
-    it("l'icone de e-mail de la barre verticale doit être en surbrillance", async () => {
+    it("l'icône de e-mail de la barre verticale doit être en surbrillance", async () => {
       const emailIcon = screen.getByTestId("icon-mail");
       expect(emailIcon.classList.contains("active-icon")).toBe(true);
     });
@@ -70,8 +70,9 @@ describe("Étant donné que je suis connecté en tant qu'employé", () => {
   });
 
   describe("Je test la soumission du formulaire", () => {
+    // POST
     it("Si le formulaire est bien rempli", () => {
-      // Comme on fait appel à une classe avec des parametres, on fait appel à cette classe.
+      // Comme on fait appel à une classe avec des paramètres, on fait appel à cette classe.
       const newBill = new NewBill({
         document,
         onNavigate,
@@ -112,7 +113,7 @@ describe("Étant donné que je suis connecté en tant qu'employé", () => {
       fireEvent.change(inputCom, { target: { value: formValues.commentary } });
       userEvent.upload(inputFile, formValues.file);
 
-      // simulation de la fonction + ecouteur + submit
+      // simulation de la fonction + écouteur + submit
       const handleSubmit = jest.fn((e) => newBill.handleSubmit(e));
       formulaire.addEventListener("submit", handleSubmit);
       fireEvent.submit(formulaire);
@@ -128,7 +129,7 @@ describe("Étant donné que je suis connecté en tant qu'employé", () => {
     });
 
     it("Si les champs sont vide, on reste sur la page de login", () => {
-      // Comme on fait appel à une classe avec des parametres, on fait appel à cette classe.
+      // Comme on fait appel à une classe avec des paramètres, on fait appel à cette classe.
       const newBill = new NewBill({
         document,
         onNavigate,
@@ -136,6 +137,7 @@ describe("Étant donné que je suis connecté en tant qu'employé", () => {
         localStorage: window.localStorage,
       });
       // test des inputs vide
+      expect(screen.getByTestId("expense-type")).toBeTruthy();
       expect(screen.getByTestId("expense-name").value).toBe("");
       expect(screen.getByTestId("datepicker").value).toBe("");
       expect(screen.getByTestId("amount").value).toBe("");
@@ -156,6 +158,16 @@ describe("Étant donné que je suis connecté en tant qu'employé", () => {
 
       expect(handleFormSubmit).toHaveBeenCalled();
       expect(form).toBeTruthy();
+    });
+    it("Les champs obligatoires possèdent l'attributs 'Required'", () => {
+      expect(screen.getByTestId("expense-type")).toBeRequired();
+      expect(screen.getByTestId("expense-name")).not.toBeRequired();
+      expect(screen.getByTestId("datepicker")).toBeRequired();
+      expect(screen.getByTestId("amount")).toBeRequired();
+      expect(screen.getByTestId("vat")).not.toBeRequired();
+      expect(screen.getByTestId("pct")).toBeRequired();
+      expect(screen.getByTestId("commentary")).not.toBeRequired();
+      expect(screen.getByTestId("file")).toBeRequired();
     });
 
     it("Je test le bon format du fichier uploader (jpeg|jpg|png)", () => {

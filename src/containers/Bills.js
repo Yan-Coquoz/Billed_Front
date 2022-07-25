@@ -46,7 +46,7 @@ export default class {
     }
   };
 
-  // NOTE ajout de la methode sort() pour les dates
+  // NOTE ajout de la méthode sort() pour les dates
   getBills = () => {
     if (this.store) {
       return this.store
@@ -63,9 +63,8 @@ export default class {
                   status: formatStatus(doc.status),
                 };
               } catch (e) {
-                // log the error and return unformatted date in that case
-                console.log("Une erreur dans le catch de getBills");
-                console.log(e, "for", doc);
+                // console.log("Une erreur dans le catch de getBills, mauvais format de date");
+
                 return {
                   ...doc,
                   date: doc.date,

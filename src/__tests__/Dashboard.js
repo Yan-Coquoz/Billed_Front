@@ -47,8 +47,8 @@ describe("Given I am connected as an Admin", () => {
     });
   });
 
-  describe("When I am on Dashboard page and I click on arrow", () => {
-    test("Then, tickets list should be unfolding, and cards should appear", async () => {
+  describe("Quand je suis sur la page de Dashboard et que je clique sur une flèche", () => {
+    test("Ensuite, la liste des billets devrait se dérouler et les cartes devraient apparaître", async () => {
       const onNavigate = (pathname) => {
         document.body.innerHTML = ROUTES({ pathname });
       };
@@ -70,6 +70,7 @@ describe("Given I am connected as an Admin", () => {
         bills: bills,
         localStorage: window.localStorage,
       });
+
       document.body.innerHTML = DashboardUI({ data: { bills } });
 
       const handleShowTickets1 = jest.fn((e) =>
@@ -91,6 +92,7 @@ describe("Given I am connected as an Admin", () => {
       expect(handleShowTickets1).toHaveBeenCalled();
       await waitFor(() => screen.getByTestId(`open-bill47qAXb6fIm2zOKkLzMro`));
       expect(screen.getByTestId(`open-bill47qAXb6fIm2zOKkLzMro`)).toBeTruthy();
+
       icon2.addEventListener("click", handleShowTickets2);
       userEvent.click(icon2);
       expect(handleShowTickets2).toHaveBeenCalled();
@@ -268,7 +270,7 @@ describe("Given I am connected as Admin, and I am on Dashboard page, and I click
 });
 
 describe("Étant donné que je suis connecté en tant qu'administrateur et que je suis sur la page du tableau de bord et que j'ai cliqué sur une facture", () => {
-  describe("When I click on the icon eye", () => {
+  describe("Quand je clique sur l'icon eye", () => {
     test("A modal should open", () => {
       Object.defineProperty(window, "localStorage", {
         value: localStorageMock,
