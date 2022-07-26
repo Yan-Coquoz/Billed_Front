@@ -165,12 +165,13 @@ export default class {
     }
 
     // NOTE Bug event à répétition
+
     bills.forEach((bill) => {
       if (!$(`#open-bill${bill.id}`).data("active")) {
-        $(`#open-bill${bill.id}`).click((evt) => {
-          $(`#open-bill${bill.id}`).data("active", true);
-          this.handleEditTicket(evt, bill, bills);
-        });
+        $(`#open-bill${bill.id}`).data("active", true);
+        $(`#open-bill${bill.id}`).click((evt) =>
+          this.handleEditTicket(evt, bill, bills),
+        );
       }
     });
 

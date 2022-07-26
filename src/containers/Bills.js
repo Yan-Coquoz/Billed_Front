@@ -47,6 +47,7 @@ export default class {
   };
 
   // NOTE ajout de la méthode sort() pour les dates
+
   getBills = () => {
     if (this.store) {
       return this.store

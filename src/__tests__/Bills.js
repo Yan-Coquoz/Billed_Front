@@ -4,12 +4,12 @@
 import "@testing-library/jest-dom";
 import { screen, waitFor } from "@testing-library/dom";
 import BillsUI from "../views/BillsUI.js";
+import Bills from "../containers/Bills.js";
 import { bills } from "../fixtures/bills.js";
 import { ROUTES, ROUTES_PATH } from "../constants/routes.js";
 import { localStorageMock } from "../__mocks__/localStorage.js";
 import mockStore from "../__mocks__/store.js";
 import router from "../app/Router.js";
-import Bills from "../containers/Bills.js";
 import userEvent from "@testing-library/user-event";
 
 // structure AAA, Arrange(mise en place des données),Act (agir sur les données), Assert(faire les assertions)
@@ -68,7 +68,7 @@ describe("Étant donné que je suis connecté en tant qu'employé", () => {
     });
 
     // tests de fonctionnels
-    it("Ouverture de la page lors du clique sur le bouton 'Nouvelle note de frais'", () => {
+    it("Ouverture de la page 'Nouvelle note de frais' lors du clique sur le bouton 'Nouvelle note de frais'", () => {
       const onNavigate = (pathname) => {
         document.body.innerHTML = ROUTES({ pathname });
       };
@@ -160,6 +160,7 @@ describe("Je suis connecter en tant qu'employé", () => {
     expect(screen.getByText("Mes notes de frais")).toBeTruthy();
     expect(table).toBeTruthy();
   });
+
   it("Doit retournée une erreur en cas de format de date non conforme", async () => {
     const mockBills = await mockStore.bills().list();
     const wrongBills = [{ ...mockBills[0] }];
@@ -187,6 +188,7 @@ describe("Je suis connecter en tant qu'employé", () => {
           },
         };
       });
+
       window.onNavigate(ROUTES_PATH.Bills);
       // process => fait partie de l'environnement de Node
       // nexTick => Lors de l'event loop, cette fonction permet de mettre dans la pile d'execution, la prochaine fonction a exécuter.
@@ -194,6 +196,7 @@ describe("Je suis connecter en tant qu'employé", () => {
       const message = await screen.getByText(/Erreur 404/);
       expect(message).toBeTruthy();
     });
+
     it("retourne une erreur 500(erreur interne du serveur)", async () => {
       mockStore.bills.mockImplementationOnce(() => {
         return {

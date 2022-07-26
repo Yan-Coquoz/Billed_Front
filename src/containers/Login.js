@@ -48,6 +48,7 @@ export default class Login {
   };
 
   // NOTE Bug sur les inputs admin
+
   handleSubmitAdmin = (e) => {
     e.preventDefault();
 
